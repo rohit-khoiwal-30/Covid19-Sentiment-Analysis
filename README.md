@@ -6,9 +6,13 @@ Once the information and insights are accurately extracted from the documents, t
 
 
 ## Getting Started
-Create new virtual env and activate it.
+Open a terminal in a specific folder.
 Then open the terminal.
 ```python
+  git clone https://github.com/rohit-khoiwal-30/Covid19-Sentiment-Analysis.git
+  cd Covid19-Sentiment-Analysis
+  virtualenv env
+  env\scripts\activate
   pip install -r requirements.txt
   cd server
   flask run

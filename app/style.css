@@ -1,0 +1,38 @@
+body {
+    padding: 0px;
+    font-family: Consolas, sans-serif;
+    z-index: 0; 
+    background-color: #282D35;
+}
+
+.header{
+    background-color: black;
+    color: aliceblue;
+}
+
+.header-text{
+    font-size: 400%;
+}
+
+.labels{
+    font-size: 26px;
+    color: aliceblue;
+}
+
+.btn-predict{
+    font-size: 20px;
+    font-weight: 1000;
+}
+textarea {
+    resize: none;
+}
+
+.pred-btns{
+    margin-top: 20px;
+}
+
+.pred-output{
+    margin-top:20px;
+    color: aliceblue;
+    font-size: 30px;
+}

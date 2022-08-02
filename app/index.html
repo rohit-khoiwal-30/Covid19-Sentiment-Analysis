@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+    <link href="style.css" rel="stylesheet">
+    <title>Sentiment Analysis</title>
+</head>
+
+
+<body>
+    
+    
+    <div class="container">
+        <!-- heading -->
+        <div class="jumbotron row header">
+            <div class="row-header">
+                <div class="text-center header-text">
+                    Covid19 Tweet Sentiment Analysis
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Tweet -->
+        <form>
+            <div class="form-group row">
+                <label for="inputTweet" class="col-form-label text-center labels">Tweet : </label>
+                <textarea class="form-control" id="inputTweet"></textarea>
+            </div>
+
+            <div class="form-groupt row">
+                <button type="button" class="btn btn-primary btn-lg btn-block boder" id="predict">
+                    <span class="btn-predict">Predict</span>
+                </button>
+            </div>
+        </form>
+
+        <!-- Prediction output -->
+        <!-- <div class="row pred-btns">
+            <a class="btn btn-primary" data-toggle="collapse" href="#predSentiment" role="button" >
+               Predicted Class
+            </a>
+            <a class="btn btn-primary" type="button" data-toggle="collapse" 
+                data-target="#predSentimentProb">
+                Predicted Probabilites
+            </a>
+        </div> -->
+        <!-- buttons -->
+        <div class="row pred-btns">
+            <a class="btn btn-primary"  id="predictedClass" role="button" >
+               Predicted Class
+            </a>
+            <a class="btn btn-primary" id="predictedProbs">
+                Predicted Probabilites
+            </a>
+        </div>
+        <!-- output -->
+        <div class="row pred-output">
+            <div class="col">
+              <div class="collapse" id="predSentiment">
+                <div class="card card-body text-center" id="answer">
+                </div>
+              </div>
+            </div>
+            <div class="col" class="collapse" id="predProbs">
+                <div class="col-4">
+                    <div class="" id="probPos">
+                        <div class="card card-body text-center" id="answerPos">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="" id="probNeutral">
+                        <div class="card card-body text-center" id="answerNeutral">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="" id="predNeg">
+                        <div class="card card-body text-center" id="answerNeg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>    
+    let ans;
+    let classes = {
+        "0" : "Neutral",
+        "1" : "Positive",
+        "-1" : "Negative"
+    }
+
+    $(document).ready(function()
+    {
+        $("#predict").click(function(){
+            var inputText = $("#inputTweet").val()
+            fetch("http://127.0.0.1:5000/test").then(result => result.json()).then((data) => {
+                console.log(data.test);
+                ans = data.test;
+                $("#answer").html("Sentiment of Tweet is : " + 0.3)
+                $("#predSentiment").show();
+            })
+        });
+
+        $("#predictedClass").on("click",function(){
+            $("#predSentimentProb").hide(); 
+            $("#predSentiment").show();
+        })
+
+        $("#predictedProbs").on('click',function()
+        {
+            $("#predSentiment").hide();
+            $("#answerProb").html("Prob of Positive : " + 0.3)
+            $("#answerProb").html("Prob of Neutral : " + 0.3)
+            $("#answerProb").html("Prob of Negative : " + 0.3)
+            $("#predProbs").show();  
+        })
+    })
+</script>
+</html>

@@ -27,7 +27,7 @@ The topic of Covid-19 is covered in a sizable corpus of tweets on Twitter. We wi
 1. We download Twitter's raw tweets into our system. [Hydrate Tweets](https://towardsdatascience.com/learn-how-to-easily-hydrate-tweets-a0f393ed340e)
 2. We must clean and preprocess tweets before using it.
 3. Than Tweet features can be extracted using the tf-idf vectorizer.
-4. Since the data is unlabeled, we must somehow label it in order to use semisupervised learning. Go to the [notebook.](https://github.com/rohit-khoiwal-30/Covid19-Sentiment-Analysis/blob/master/Sentiment_Analysis.ipynb)
+4. Since the data is unlabeled, we must somehow label it in order to use supervised learning. Go to the [notebook.](https://github.com/rohit-khoiwal-30/Covid19-Sentiment-Analysis/blob/master/Sentiment_Analysis.ipynb)
 5. After labelling, we extract features using countvectorizer from Sklearn.
 6. For classification, we employ a naïve bayes classifier. 
 

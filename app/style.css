@@ -33,6 +33,9 @@ textarea {
 
 .pred-output{
     margin-top:20px;
-    color: aliceblue;
+    color: black;
     font-size: 30px;
+}
+.prob-block{
+    border-radius: 10px;
 }

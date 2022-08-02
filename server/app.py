@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_cors import CORS
 import joblib
 
@@ -8,7 +8,8 @@ model = joblib.load("../model/model.pkl")
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/test")
+@app.route("/test", methods = ['POST'])
 def create():
-    test = model.predict(vec.transform(['I lost my job after the pandemic'])).tolist()
-    return {"test": 1}
+    ans = model.predict(vec.transform([request.data.lower()])).tolist()
+    probs = model.predict_proba(vec.transform([request.data.lower()])).tolist()
+    return {"class": ans, "probs" : probs}

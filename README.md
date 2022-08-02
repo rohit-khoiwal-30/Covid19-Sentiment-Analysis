@@ -7,7 +7,7 @@ Once the information and insights are accurately extracted from the documents, t
 
 ## Getting Started
 Open a terminal in a specific folder.
-Then open the terminal.
+Then execute the following command one at a time.
 ```python
   git clone https://github.com/rohit-khoiwal-30/Covid19-Sentiment-Analysis.git
   cd Covid19-Sentiment-Analysis
